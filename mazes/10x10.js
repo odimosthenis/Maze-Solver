@@ -1,4 +1,4 @@
-var maze2 = {
+var maze1 = {
     start: {x: 0, y: 0},
         end: {x: 9, y: 9},
         width: 10,

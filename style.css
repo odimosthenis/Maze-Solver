@@ -8,3 +8,16 @@ button{
 button:hover{
     cursor: pointer;
 }
+
+.wrapper{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.btns{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    max-width: 200px;
+    row-gap: 10px;
+}

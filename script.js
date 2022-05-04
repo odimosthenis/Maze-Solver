@@ -1,25 +1,44 @@
-console.log("m: ",maze2)
-
+let mazes = [maze1,maze2,maze3]
 let openSet = []
 let closeSet = []
-let maze = maze2
+let maze;
 let grid;
+let path;
+let active=false;
+
+window.onload = ()=>{
+    document.querySelectorAll('button').forEach(btn=>{
+        btn.addEventListener('click',()=>{
+            const i = btn.dataset.size;
+            maze=mazes[i]
+            console.log('click')
+            active=true;
+            path=[];openSet=[];closeSet=[];
+            loadMaze(maze,openSet)
+        
+        });
+    }) 
+}
+
 
 function setup(){
     
-
     let width=600, height=600;
     let canvas = createCanvas(width,height)
+    fill(50);
+    rect(0, 0, 600, 600);
+
+    
     canvas.parent("c");
     frameRate(20)
-
-    blocksize = width/maze.width;
-
-    loadMaze(maze,blocksize,openSet)
+    textSize(32);
+    text('Choose the size of the maze', 10, 30);
+    fill(100, 102, 153);
 
 }
 
-function loadMaze(maze, blocksize,openSet){
+function loadMaze(maze,openSet){
+    blocksize = width/maze.width;
     grid = createGridFromMaze(maze, blocksize)
 
     start=grid[maze.start.x][maze.start.y]
@@ -30,8 +49,9 @@ function loadMaze(maze, blocksize,openSet){
 
 
     for (let i=0;i<maze.width;i++){
-        for (let j=0;j<maze.width;j++){
-            grid[i][j].show(color(254))
+        for (let j=0;j<maze.width;j++){            
+            if (!grid[i][j].wall)grid[i][j].show(color(240))
+            else grid[i][j].show(color(0))
         }
     }
 
@@ -52,7 +72,7 @@ function createGridFromMaze(maze,blocksize){
             // wall
             grid[Math.floor(i/maze.width)][ i%maze.width ] 
             = new Spot(maze,Math.floor(i/maze.width),i%maze.width,true, blocksize)
-        }else{
+        }else {
             // free
             grid[Math.floor(i/maze.width)][ i%maze.width ] 
             = new Spot(maze,Math.floor(i/maze.width),i%maze.width,false, blocksize)
@@ -61,7 +81,6 @@ function createGridFromMaze(maze,blocksize){
 
     for (let i=0;i<maze.width;i++){
             for (let j=0;j<maze.width;j++){
-                console.log(i,j)
                 grid[i][j].addNeighbors(grid)
         }
     }
@@ -75,7 +94,13 @@ let best=null;
 let steps=0;
 
 function draw(){
-
+    
+    if(!active){
+        textSize(32);
+        text('Choose the size of the maze', 30, 40);
+        fill(210, 210, 210);
+        return;
+    } 
     steps++;
     // the a* path algorithm
     if(openSet.length>0){
@@ -154,12 +179,7 @@ function draw(){
         temp = temp.prev;
     }
     
-    // paint the board
-    for (let i=0;i<maze.width;i++){
-        for (let j=0;j<maze.width;j++){
-            grid[i][j].show(color(254))
-        }
-    }
+   
 
     paintIt()
 }
