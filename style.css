@@ -11,7 +11,9 @@ button:hover{
 
 .wrapper{
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap:nowrap;
+    flex-direction: row;
+    
 }
 
 .btns{
@@ -20,4 +22,20 @@ button:hover{
     flex-direction: column;
     max-width: 200px;
     row-gap: 10px;
+}
+
+h2{
+    display: inline-block;
+    margin:10px 0 0 50px;
+    padding:0 10px;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+
+}
+
+.speedWrapper{
+    font-size: 18px;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 10px;
 }

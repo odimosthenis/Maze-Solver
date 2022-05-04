@@ -51,6 +51,7 @@ function Spot(maze,i,j,wall, blocksize){
         }
 
         // diagonals
+        /*
         if (this.i>0 && this.j>0){
             this.neightbors.push(grid[this.i-1][this.j-1])
         }
@@ -66,6 +67,7 @@ function Spot(maze,i,j,wall, blocksize){
         if (this.j < maze.width-1 && this.i>0){
             this.neightbors.push(grid[this.i-1][this.j+1])
         }
+        */
         
 
     }

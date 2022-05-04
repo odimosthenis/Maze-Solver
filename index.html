@@ -33,15 +33,25 @@
         </a>
     </div>
 
+    <h2>Maze Solver</h2>
+
     <div class="wrapper">
         <div id="c">
 
         </div>
     
         <div class="btns">
-            <button data-size="0" >Small</button>
-            <button data-size="1" >Medium</button>
-            <button data-size="2" >Huge</button>
+            <button data-size="0" >Standar Small</button>
+            <button data-size="1" >Standar Medium</button>
+            <button data-size="2" >Standar Huge</button>
+
+            <button id="randommaze">Random Maze!</button>
+
+            <div class="speedWrapper">
+                <span id="speedDisplay"><b>Speed: 20</b></span>
+                <input type="range" id="frameRate" max="100" min="1" step="1" value="20">
+            </div>
+            
         </div>
     </div>
 
